@@ -1,0 +1,34 @@
+name: Build Windows Executable
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build executable
+      run: |
+        pyinstaller --onefile --noconsole convert_pptx_to_pdf.py
+
+    - name: Upload .exe as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: pptx-to-pdf-exe
+        path: dist/convert_pptx_to_pdf.exe
