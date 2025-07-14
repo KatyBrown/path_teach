@@ -1,16 +1,14 @@
-name: Build Windows Executable
+name: Build and Release remove_notes.exe
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:  # Allows manual trigger
+  workflow_dispatch:  # manual trigger from GitHub UI
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Set up Python
@@ -23,12 +21,14 @@ jobs:
         pip install -r requirements.txt
         pip install pyinstaller
 
-    - name: Build executable
+    - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --noconsole scripts/remove_notes.py
+        pyinstaller --onefile --noconsole remove_notes.py
 
-    - name: Upload .exe as artifact
-      uses: actions/upload-artifact@v4
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
       with:
-        name: remove-notes-exe
-        path: dist/remove_notes.exe
+        tag_name: v1.0.${{ github.run_number }}
+        name: "Release v1.0.${{ github.run_number }}"
+        token: ${{ secrets.GH_RELEASE_TOKEN }}
+        files: dist/remove_notes.exe
