@@ -23,7 +23,7 @@ jobs:
 
     - name: Build with PyInstaller
       run: |
-        pyinstaller --onefile --noconsole remove_notes.py
+        pyinstaller --onefile --noconsole scripts/remove_notes.py
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
