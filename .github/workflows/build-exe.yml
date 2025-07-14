@@ -25,7 +25,7 @@ jobs:
 
     - name: Build executable
       run: |
-        pyinstaller --onefile --noconsole convert_pptx_to_pdf.py
+        pyinstaller --onefile --noconsole scripts/remove_notes.py
 
     - name: Upload .exe as artifact
       uses: actions/upload-artifact@v4
