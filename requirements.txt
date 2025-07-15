@@ -1,2 +1,4 @@
 python-pptx
 PyQt5
+pandas>=1.0
+Unidecode>=1.0
