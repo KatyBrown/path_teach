@@ -279,7 +279,7 @@ def main():
 
     # Create a string of the date and time - to name the log file
     now = datetime.now()
-    timestamp = now.strftime("%Y%m%d-%H:%M:%S")
+    timestamp = now.strftime("%Y%m%d-%H-%M-%S")
     # Create the log file
     log = open(f"{out_folder}/logfile_{timestamp}.txt", "w")
 
