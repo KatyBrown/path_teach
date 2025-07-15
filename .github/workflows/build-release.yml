@@ -38,4 +38,4 @@ jobs:
         token: ${{ secrets.GH_RELEASE_TOKEN }}
         files: |
           dist/remove_notes.exe
-          dist/clean_student_names.exe
+          dist/clean_file_names.exe
