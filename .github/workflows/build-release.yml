@@ -1,9 +1,8 @@
 name: Build and Release Tools
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:  # Manual trigger from GitHub UI
+
 jobs:
   build:
     runs-on: windows-latest
