@@ -28,7 +28,7 @@ jobs:
 
     - name: Build clean_student_names.exe
       run: |
-        pyinstaller --onefile --noconsole scripts/clean_student_names.py
+        pyinstaller --onefile --noconsole scripts/clean_file_names.py
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v2
