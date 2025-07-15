@@ -1,0 +1,41 @@
+name: Build and Release Tools
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+        pip install pyinstaller
+
+    - name: Build remove_notes.exe
+      run: |
+        pyinstaller --onefile --noconsole scripts/remove_notes.py
+
+    - name: Build clean_student_names.exe
+      run: |
+        pyinstaller --onefile --noconsole scripts/clean_student_names.py
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: v1.0.${{ github.run_number }}
+        name: "Release v1.0.${{ github.run_number }}"
+        token: ${{ secrets.GH_RELEASE_TOKEN }}
+        files: |
+          dist/remove_notes.exe
+          dist/clean_student_names.exe
