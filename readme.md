@@ -40,15 +40,15 @@ A third pop-up will ask for the student table - this is the tab delimited table 
 The script will then rename and copy each file, unless it encounters an error. Errors are output to a file named `logfile_xyz.txt` in the output folder, where xyz is the current date and time.
 
 Error codes:
-1 - Invalid output folder
-2 - Invalid input folder
-3 - Invalid student table
-4 - More than one student name with the same ID
-5 - Subfolder can't be opened
-6 - No matching files found in the subfolder
-7 - Too many matching files found in the subfolder
-8 - Student last name not found in table
-9 - Mismatch between ID in file name and ID in student table
+* 1 - Invalid output folder
+* 2 - Invalid input folder
+* 3 - Invalid student table
+* 4 - More than one student name with the same ID
+* 5 - Subfolder can't be opened
+* 6 - No matching files found in the subfolder
+* 7 - Too many matching files found in the subfolder
+* 8 - Student last name not found in table
+* 9 - Mismatch between ID in file name and ID in student table
 
 
 #### `scripts/remove_notes.py` 
